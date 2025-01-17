@@ -401,7 +401,7 @@ export const properFileSize =
 
     if (file.size <= userMin * 1024) {
       Modal.message({
-        message: `${t(constants.EDM.SIZE, { minSize: api.formatFileSize(Number(userMin), 'K'), sizeUnit: '' })}`,
+        message: `${t(constants.EDM.SIZE, { minSize: api.formatFileSize(Number(userMin), ' KB'), sizeUnit: '' })}`,
         status: 'warning'
       })
 
@@ -1511,7 +1511,7 @@ export const downloadFileSingleInner =
 
 export const getDownloadFileInfo =
   ({ api, state, props, service }: Pick<IFileUploadRenderlessParams, 'api' | 'state' | 'props' | 'service'>) =>
-  ({ docId }: { docId: string }) => {
+  ({ docId, docVersion }: { docId: string; docVersion: string }) => {
     return service.getDocumentInfoUrl().then((url) => {
       return new Promise((resolve, reject) => {
         service
